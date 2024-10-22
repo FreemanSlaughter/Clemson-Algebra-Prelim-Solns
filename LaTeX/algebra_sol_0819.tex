@@ -1,0 +1,287 @@
+
+\begin{itemize}
+
+\item[1.] Fix an integer $d \geq 2$, and consider the real vector space
+$$V_d = \bbr[x]_{<d} = \{a_0 + a_1 x + a_2 x^2 + ... + a_{d-1} x^{d-1} | a_0, ... , a_{d-1} \in \bbr\}.$$
+For all $f, g \in V_d$, define
+$$\ip{f}{g} = \int_0^1 fg \ dx$$
+where $f g$ is the usual product of $f$ and $g$ from calculus.
+\begin{enumerate}[(a)]
+    \item Prove that $\ip{\cdot}{\cdot}$ is an inner product on $V_d$.
+    \begin{proof}
+    Linearity follows from properties of integrals. Symmetry is clear, and $\ip{f}{f} = \int f^2 \, dx \geq 0$.
+    \end{proof}
+    
+    \item In the case $d = 3$, apply the Gram-Schmidt process to the basis $1$, $x$, $x^2$ to find an orthonormal basis for $V_3$. Then consider the subspace $W = \text{Span}_{\bbr}(1 - 2x)$ and find a basis for $W^{\perp}$.
+    \begin{proof}
+    We should get \[\left[1, \, 5x - \frac{5}{2}, \, 180x^2 - 180x + 30\right].\]
+    Note that $W = \text{Span}_{\bbr}(e_2)$ above, so the basis for $W^{\perp}$ will be everything orthogonal to $e_2$, which is spanned by $e_1$ and $e_3$.
+    \end{proof}
+    
+    \item Let $D : V_d \rar V_d$ be the differentiation operator $D(f) = f' = df / dx$, which is a linear transformation. Find the matrix representing $D$ with respect to the basis $1$, $x$, ..., $x^{d-1}$. Prove or disprove: $D$ is an isomorphism.
+    \begin{proof}
+    \[\begin{pmatrix}
+    0 & 0 & ... & 0 \\
+    1 & 0 & ... & 0 \\
+    0 & 2 & ... & 0 \\
+    ... & & & \\
+    0 & ... & d-1 & 0
+    \end{pmatrix} 
+    \begin{pmatrix}
+    1 \\
+    x \\
+    x^2 \\
+    ... \\
+    x^{d-1}
+    \end{pmatrix}
+    = 
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    2x \\
+    ... \\
+    (d-1)x^{d-2}
+    \end{pmatrix}.\]
+
+    This is clearly not invertible. Another way to see this is that all constants get sent to 0, so of course it's not an isomorphism.
+    \end{proof}
+    
+    \item Prove or disprove: $D$ is diagonalizable.
+    \begin{proof}
+    A matrix is diagonalizable if it has $n$ distinct eigenvalues; so if it has $n$ repeated eigenvalues then it is not diagonalizable. The eigenvalues for $D$ will be all $0$'s, so not diagonalizable. 
+    \end{proof}
+    
+    \item Compute $D^*(a_0 + a_1 x + a_2 x^2 + ... + a_{d-1} x^{d-1})$ where $D^* : V \rar V$ is the adjoint of $D$.
+    \begin{proof}
+        Since we know the matrix representation of $D$, its adjoint $D^*$ will be the transpose. If you are more analytically minded, consider the integration by parts:
+        $$\ip{Dp}{q} = \Big( p(1)q(1) - p(0)q(0) \Big) - \ip{p}{Dq}.$$
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+\item[2.] Let $A_p = \begin{bmatrix}
+4 & 1 & p \\
+0 & 5 & 1 \\
+0 & 1 & 5
+\end{bmatrix}$, $p \in \bbr$.
+\begin{enumerate}[(a)]
+    \item Find the characteristic and the minimal polynomial of $A_p$.
+    \begin{proof} This should be calculated \textit{after} finding the Jordan normal form. Minimal and characteristic coincide here, for $p \neq 1$. When $p=1$, just drop the square.
+    \[\chi(x) = x^3 - 14x^2 + 64x - 96 = (x-6)(x-4)^2.\]
+    \end{proof}
+    
+    \item Find the Jordan normal form $J$ of $A_p$ and a matrix $S$ such that $A = SJS^{-1}$.
+    \begin{proof}
+    For $p \neq 1$, clearly an eigenvector is $v_1 = (1,0,0)$. A less obvious one is $v_2 = (\frac{1+p}{2},1,1)$. An even more less obvious one is the generalized eigenvector $v_3 = (0,\frac{1}{1-p},\frac{-1}{1-p})$. These show that the eigenvalues are $4,4,6$, where $4$ has multiplicity two. Thus:
+    \[J = \begin{bmatrix}
+    4 & 1 & 0 \\
+    0 & 4 & 0 \\
+    0 & 0 & 6
+    \end{bmatrix}\] and 
+    \[S = \begin{bmatrix}
+    1 & 0 & \frac{1+p}{2} \\
+    0 & \frac{1}{1-p} & 1 \\
+    0 & \frac{-1}{1-p} & 1
+    \end{bmatrix}.\]
+
+    When $p=1$, we have the same $v_1$ and $v_2$, but $v_3 = (0, 1, -1)$. Now $J$ is strictly diagonal, as we have three genuine eigenvectors. 
+    \end{proof}
+    
+    \item Prove that $V [A_p] = \{a_0 I + a_1 A _p + ... + a_n A_p^n | a_i \in \bbr, n \in \bbn\}$ with the usual matrix addition and scalar multiplication is a vector space over $R$.
+    \begin{proof}
+    Check the axioms.
+    \end{proof}
+    
+    \item Find the dimension and a basis for $V [A_p]$.
+    \begin{proof}
+    The minimal polynomial being $\chi(x) = x^3 - 14x^2 + 64x - 96$ (for $p \neq 1$) implies the dimension is 3. A basis is $[I, A, A^2]$, since $A^3 =  14A^2 - 64A + 96I$. The same idea holds for $p=1$.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+\item[3.]
+\begin{enumerate}[(a)]
+    \item Prove: If $W_1$ and $W_2$ are subspaces of $V$ then $W_1 \cup W_2$ is a subspace of $V$ if and only if $W_1 \subset W_2$ or $W_2 \subset W_1$.
+    \begin{proof}
+    For contradiction, suppose neither is a subset of the other. Then $\exists u \in W_1 \setminus W_2$ and $\exists v \in W_2 \setminus W_1$. Hence both $u$ and $v$ are in $W_1 \cup W_2$. But this union is a subspace, so $u+v \in W_1 \cup W_2$, implying that $u+v \in W_1$ or $u+v \in W_2$. However, this means that either $(u+v) - u \in W_1$ or $(u+v) - v \in W_2$. Either way, we get a contradiction.
+    \end{proof}
+    
+    \item Let $x$ and $y$ be distinct eigenvectors of a matrix $A$ such that $x + y$ is also an eigenvector of $A$. Prove that $x$ and $y$ correspond to the same eigenvalue.
+    \begin{proof}
+    Let $Ax=\lambda x$ and $Ay=\mu y$. As $x+y$ is an eigenvector, write $A(x+y) = \nu (x+y)$. Then $\lambda x + \mu y = A(x+y) = \nu x + \nu y$, implying that $\lambda = \nu = \mu$, a contradiction.
+    \end{proof}
+    
+    \item Prove that a self-adjoint linear map $T : V \rar V$ on a complex inner product space $V$ has only real eigenvalues and that eigenvectors corresponding to different eigenvalues are orthogonal.
+    \begin{proof}
+    \[\lambda \ns{x} = \lambda \ip{x}{x} = \ip{Tx}{x} = \ip{x}{Tx} = \overline{\lambda} \ip{x}{x} = \overline{\lambda} \ns{x}.\]
+
+    Now, let $Tx=\lambda x$ and $Ty=\mu y$. Then 
+    \[\lambda \ip{x}{y} = \ip{Tx}{y} = \ip{x}{Ty} = \overline{\mu} \ip{x}{y} = \mu \ip{x}{y}.\]
+    Since these correspond to different eigenvalues, it must be that $\ip{x}{y} = 0$.
+    \end{proof}
+    
+    \item Find all self-adjoint complex $n \times n$ matrices $A$ that satisfy $A^3 = 2A + 4I$.
+    \begin{proof}
+    This has the trivial solution $x=2$, and polynomial division gives the other roots as $x=\pm i - 1$. By Cayley-Hamilton, these must be the eigenvalues of $A$. But a self-adjoint map has only real eigenvalues, hence any such matrix has the eigenvalue 2 repeated with multiplicity $n$. Thus $A = P \, (\text{diag}\{2\}) \, P^{-1}$ for an invertible $P$.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\item[4.] Let $G$ be a finite group acting on itself by conjugation. In this problem, you may
+assume basic results, such as the orbit-stabilizer theorem, or classification of finite
+abelian groups, provided that you properly state them.
+\begin{enumerate}[(a)]
+    \item Characterize the orbits, stabilizers, kernel, and fixed points of this action. Your answer should be in terms of familiar group-theoretic objects, not just the definitions of these terms.
+    \begin{proof}
+        Orbits are conjugacy classes of elements in $G$, stabilizer of an element will be the centralizer of that element, the kernel is trivial, and the fixed points are the elements in the center.
+    \end{proof}
+    
+    \item Prove that the size of any conjugacy class divides $|G|$.
+    \begin{proof}
+        The is clear using the above definitions and Orbit-Stabilizer.
+    \end{proof}
+    
+    \item Show that if $G$ contains an element $x \in G$ that has exactly two conjugates, then $G$ cannot be simple.
+    \begin{proof}
+        Suppose that $a^{-1}xa = y$ and $b^{-1}xb = y$. 
+        Note that $X$ having exactly two conjugates implies $C_G(X)$ a proper subgroup. If $e \in C_G(X)$, then for there to be exactly two conjugates, $a^{-1}xa = b^{-1}xb$, which gives that $a^{-1}b x (a^{-1}b)^{-1} = x$, hence $a^{-1}b \in C_G(X)$. 
+        \medskip 
+        
+        This means that either $C_G(X)$ is non-trivial, or $a^{-1}b=e$, thus $a=b$ - contradiction. Therefore, we have that $C_G(X)$ is a proper non-trivial subgroup with $G : C_G(X) = 2$, as the two conjugacy classes of $X$ are in one-to-one correspondence with the cosets of $X$. Thus, $G$ has a non-trivial normal subgroup, so cannot be simple.
+    \end{proof}
+    
+    \item Prove that if $G$ is a $p$-group, then its center is non-trivial.
+    \begin{proof}
+    This follows from the Class Equation:
+    $$|G| = |Z(G)| + \sum_{i=1}^k [G:C_G(x_i)].$$
+    Since the size of every conjugacy class is a power of $p$, $[G:C_G(x_i)] = \frac{p^n}{p^{m_i}}$ for each $m_i$. If there exists an $x_i$ such that $|C_G(x_i)| = p^n$, then $|Z(G)|=0$, which is impossible since it must contain at least $e$. 
+    Thus, rearranging, we see 
+    $$p^n - \sum_{i=1}^k \frac{p^n}{p^{m_i}} = |G| - \sum_{i=1}^k [G:C_G(x_i)] = |Z(G)|,$$
+    where since $p$ divides the LHS, it must be that $Z(G)$ is non-trivial.
+    \end{proof}
+
+    \item Classify all simple $p$-groups, with proof. You may use the results of the previous parts, even if you could not prove them.
+    \begin{proof}
+    As every $p$-group has a non-trivial center, but the center is always normal, we get that $G$ can only be simple if $Z(G) = G$. That is, $G$ is simple and Abelian, so must be isomorphic to $\bbz_p$: 
+    \medskip 
+    
+    Any $g \in G$ must generate the whole group, so suppose $g$ has order $kl$. The subgroup generated by $g^k$ will be a non-trivial normal subgroup, so $|G|$ must be just $p$. So $G$ is cyclic of prime order, thus isomorphic to $\bbz_p$.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\item[5.] The \textit{First Isomorphism Theorem} holds for a variety of algebraic structures, and it relates the quotient of the domain of a homomorphism to its kernel and image.
+\begin{enumerate}[(a)]
+    \item Prove that the kernel of a group homomorphism is a subgroup and that it is normal.
+    \begin{proof}
+    Subgroup is by definition. To see normality, $$\varphi(g^{-1}xg) = \varphi(g^{-1}) \varphi(x) \varphi(g) = \varphi(g)^{-1} \varphi(x) \varphi(g) = e,$$
+    since $x \in \Kern(\varphi)$, $\varphi(x) = e$.
+    \end{proof}
+    
+    \item State and prove the First Isomorphism Theorem for groups.
+    \begin{proof}
+    Just use the Universal Property, lol.
+    \end{proof}
+    
+    \item Prove that the kernel of a ring homomorphism is a two-sided ideal.
+    \begin{proof}
+    This is similar to the group-theoretic case: $a \in \Kern(\varphi)$, $\varphi(a) = 0$, thus 
+    $$\varphi(ra) = \varphi(r)\varphi(a) = 0.$$
+    \end{proof}
+    
+    \item State and prove the First Isomorphism Theorem for rings
+    \begin{proof}
+    We saw above that $\Kern(\varphi)$ is an ideal, so define $\psi: R \rar \Image(\varphi)$ by $\psi(r+I) = \varphi(r)$. This is well-defined and injective, by inspection. It can also be seen that $\psi$ is surjective. All we need to show, then, is that $\psi$ respects addition and multiplication: this follows as $\varphi$ is a ring homomorphism
+    $$\psi(r_1+I) + \psi(r_2+I) =\psi\Big((r_1+I) + (r_2+I)\Big),$$
+    $$\psi(r_1+I) \cdot \psi(r_2+I) =\psi\Big((r_1+I)(r_2+I)\Big).$$
+    All in all, $\psi$ is a ring homomorphism that is injective and surjective, thus $R/\Kern(\varphi) \cong \Image(\varphi)$.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\item[6.] Prove or disprove each of the following:
+\begin{enumerate}[(a)]
+    \item Every Euclidean domain is a principal ideal domain.
+    \begin{proof}
+    True: suppose $R$ is ID with some non-trivial ideal $I$. Then take $a \in I$ non-zero such that $d(a)$ is minimal, where $d(\cdot)$ is the Euclidean function. Then for any $b \in I$, we can write $b = qa + r$, where either $r=0$ or $d(r) < d(a)$. But, by ideal properties, $r = b - qa \in I$; this is a contradiction to the minimality of $d(a)$, thus $r=0$. Therefore $a|b$ and $I = \langle a \rangle$, thus a PID.
+    \end{proof}
+    
+    \item Every principal ideal domain is a Euclidean domain.
+    \begin{proof}
+    False: consider $\bbz[\frac{1+\sqrt{-19}}{2}]$. Be warned, this is NOT an easy proof, so just say something like ``this is \textit{obviously} a PID because it has a Dedekind-Hasse norm, but \textit{as any idiot could see} not Euclidean because it has no Universal Side Divisors!"
+    \end{proof}
+    
+    \item Every principal ideal domain is a unique factorization domain.
+    \begin{proof}
+    True: note that if $a|b$, then as ideals $\langle a \rangle \supseteq \langle b \rangle$.
+    \medskip 
+
+    The idea now is to see that a \textit{descending} chain of divisors $... \, |\, d_n\,|\,...\,|\,d_2\,|\,d_1$ corresponds to an \textit{ascending} chain of ideals $...\supseteq \langle d_n \rangle \supseteq ... \supseteq \langle d_2 \rangle \supseteq \langle d_1 \rangle$.
+    Now, let $D = \bigcup_i \langle d_i \rangle$. This is an ideal, so since $R$ is a PID, $D = \langle d \rangle$. This means that there exists a $d_k$ such that the chain stabilizes at $\langle d_k \rangle$ (Noetherian!). The rest is arguing off this result.
+    \end{proof}
+    
+    \item Every unique factorization domain is a principal ideal domain.
+    \begin{proof}
+    False: consider $\bbz[x]$. This is clearly a UFD, but cannot be a PID since no principal ideal will generate both $\langle 1 \rangle$ and $\langle x \rangle$.
+    \end{proof}
+    
+    \item Every integral domain is a unique factorization domain.
+    \begin{proof}
+    False: consider $\bbz[\sqrt{-5}]$. This gives rise to the factor 
+    $$6 = 2 \cdot 3 = (1 + \sqrt{-5}) \cdot (1 - \sqrt{-5}).$$
+    One can argue by norms or by inspection that neither of the LHS factors will divide $2$, so this is genuinely a different factoring.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}

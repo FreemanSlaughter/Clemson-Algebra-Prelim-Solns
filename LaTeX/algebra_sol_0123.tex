@@ -1,0 +1,202 @@
+
+\begin{itemize}
+
+\item[1.]
+\begin{enumerate}[(a)]
+    \item Let $A,B \in \bbc^{n \times n}$ be Hermitian matrices. Prove that the eigenvalues of
+    $(A + B)$ are real.
+    \begin{proof}
+
+    \end{proof}
+    
+    \item Let $A,B \in \bbr^{n \times n}$ be symmetric matrices. State and prove a sufficient condition about the matrices $A, B$ in order to conclude that AB has only real eigenvalues
+    \begin{proof}
+    
+    \end{proof}
+    
+    \item Let $A \in \bbc^{n \times n}$ be an arbitrary matrix. Prove that if $\ip{Ax}{x} = 0$ for all $x \in \bbc^{n}$, then $A = 0$.
+    \begin{proof}
+    
+    \end{proof}
+    
+    \item Let $A \in \bbr^{n \times n}$ be an arbitrary matrix. Prove or disprove: if $\ip{Ax}{x} = 0$ for all $x \in \bbr^{n}$, then $A = 0$.
+    \begin{proof}
+    
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+\item[2.]
+\begin{enumerate}[(a)]
+    \item Let $T : V \rar V$ be a linear operator. Suppose $v_1, ..., v_n$ are non-zero vectors in $V$ such that $T(v_1) = 0$ and $T(v_i) = v_{i-1}$ for $2 \leq i \leq n$. Prove that $\{v_1, ..., v_n\}$ is a linearly independent set.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Let $B = \{u_1, . . . , u_n\}$ be a basis of a vector space $V$. Let $C =\{v_1, . . . , v_m\}$ be a linearly independent set in $V$. Prove that there is an integer $k$, $1 \leq k \leq n$, such that vectors $u_k, v_2, . . . , v_m$ are linearly independent.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Let $V$ be the vector space of all polynomial functions from $\bbr$ to $\bbr$ which have degree less than or equal to $n - 1$. Let $t_1, . . . , t_n$ be any $n$ distinct real numbers, and define linear functionals $L_i(p) = p(t_i)$ on $V$. Show that $L_1, . . . , L_n$ are linearly independent.
+    \begin{proof}
+
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+\item[3.] Let $\bbf$ be a field and $V$ a vector space over $\bbf$ of dimension $n$. Let $\phi : V \rar V$ be an
+$\bbf$-linear map. For any polynomial $g(x) \in \bbf[x]$, define
+$$B(g) = \{v \in V : g(\phi)(v) = 0\}.$$
+Note that $B(g)$ is a subspace of $V$.
+\begin{enumerate}[(a)]
+    \item For any $g(x) \in \bbf[x]$, prove that $B(g)$ is $\phi$-invariant.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Let $g(x) \in \bbf[x]$ be the minimal polynomial of $\phi$. Suppose $g = g_1(x)g_2(x) ... g_t(x)$ where $g_1(x), ..., g_t(x) \in \bbf[x]$ are pairwise relatively prime. Prove that $$V = B(g_1) \oplus ... \oplus B(g_t),$$ that is, for every $v\in V$, there exist unique $v_1 \in B(g_1), ..., v_t \in B(g_t)$ so that $v = v_1 + ... + v_t$.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Suppose $g(x) \in \bbf[x]$ is irreducible of degree $m$ and $t \geq 1$ is an integer. Give an example of $V$ with dimension $n = mt$ and a linear map $\phi$ so that $\phi$ has characteristic polynomial $g(x)^t$ and minimal polynomial $g(x)$. In your example with $m > 1$, explain why $\phi$ has no eigenvector in $V$. 
+    \begin{proof}
+
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+\item[4.] Let $G$ be a group of order $n = 2km$ where $m$ is odd and $k \geq 1$. Suppose that $G = {g_1, ..., g_n}$. If you do not know how to do one part, you may earn points on subsequent parts by assuming the previous results.
+\begin{enumerate}[(a)]
+    \item Define a map $\phi : G \rar S_n$ where $h \mapsto \pi_h$ with the property that $g_{\pi_h(i)} = hg_i$. Prove that $\phi$ is an injective homomorphism.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Prove that $\pi^t_{h}(i) = i$ for some $i$ if and only if $|h|$ divides $t$. Here, $\pi^t_{h}$ denotes applying $\pi_{h}$ $t$-many times. From this, conclude that $\pi_{h}$ is a product of cycles of length $|h|$.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Prove that the sign of the permutation $\pi_{h}$ is $(-1)^{\frac{|G|}{|h|}}$.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Prove that $\pi_{h}$ is an odd permutation if and only if $2^k$ divides $|h|$. Conclude that $\phi(G)$ has an odd permutation if and only if $G$ has an element whose order is divisible by $2^k$.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Suppose that $G$ has an element whose order is divisible by $2^k$. Prove that $\phi(G)A_n = S_n$. Conclude that $\phi(G) \cap A_n$ has index $2$ in $\phi(G)$, and, hence, that $G$ is not simple.
+    \begin{proof}
+
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+\item[5.] Given a group $G$, let $\text{Aut}(G)$ be its automorphism group
+\begin{enumerate}[(a)]
+    \item For some fixed $g \in G$, define the function $$\varphi_g : G \rar G, \ \ \  \varphi_g : x \mapsto g^{-1}xg.$$ Show that $\varphi_g$ is an automorphism.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Automorphisms of the form $\varphi_g$, as defined in Part (a), are called inner automorphisms. Let $$\text{Inn}(G) = \{ \varphi_g | g \in G \}$$ be the set of inner automorphisms. Show that $\text{Inn}(G)$ is a subgroup of $\text{Aut}(G)$ and that it is normal.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Show that the map $G \rar \text{Inn}(G)$ defined by $g \mapsto \varphi_g$ is a homomorphism.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Show that $\text{Inn}(G) \cong G/\text{Z}(G)$, where $\text{Z}(G)$ is the center of $G$.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Prove that if $G/\text{Z}(G)$ is cyclic, then $G$ is abelian.
+    \begin{proof}
+
+    \end{proof}
+
+    \item Show that $\text{Inn}(G)$ cannot be a nontrivial cyclic group.
+    \begin{proof}
+
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+\item[6.] In this problem, you will prove the four isomorphism theorems for rings. Rings
+are additive abelian groups, and you can and should assume all results from group
+theory, such as the group isomorphism theorems, and the specific homomorphism(s)
+used to prove them, which will be described below. A key aspect of this problem
+is recognizing and understanding what you have to prove; none of the individual
+parts should be long.
+\begin{enumerate}[(a)]
+    \item Show that the kernel of a ring homomorphism is a $2$-sided ideal.
+    \begin{proof}
+
+    \end{proof}
+
+    \item The \textit{fundamental homomorphism theorem} (FHT) says that if $\phi : R \rar S$ is a ring homomorphism, then $R/\text{Ker}(\phi) \cong \text{Im}(\phi) $. The proof of this for groups involves constructing a map $$\iota : R/I \rar \text{Im}(\phi), \ \ \  \iota(r + I) = \phi(r),$$ where $I = \text{Ker}(\phi)$, and showing that it is a well-defined group isomorphism. Carry out the remaining details to prove the ring-theoretic version of the FHT.
+    \begin{proof}
+
+    \end{proof}
+
+    \item By the \textit{correspondence theorem}, every subgroup of $R/I$ has the form $S/I$ for some subgroup $S$ satisfying $I \leq S \leq R$.
+        \begin{enumerate}[i]
+          \item Show that $S/I$ is a subring of $R/I$ if and only if $S$ is an subring of $R$.
+           \begin{proof}
+
+           \end{proof}
+
+        \item Show that $J/I $is an ideal of $R/I$ if and only if $J$ is an ideal of $R$.
+           \begin{proof}
+
+           \end{proof}
+        \end{enumerate}
+    
+
+    \item The \textit{fraction theorem} says that $(R/I)/(J/I) \cong R/J$. The proof of this theorem for groups involves showing that the following map $$\phi : R/I \rar R/J, \ \ \ \phi(r + I) = r + J$$ is a group homomorphism with $\text{Ker}(\phi) = J/I$. Carry out the remaining details to establish the ring-theoretic version of this theorem.
+    \begin{proof}
+
+    \end{proof}
+
+    \item The \textit{diamond theorem} says that $(S + I)/I \cong S/(S \cap I)$ for a subring $S$ and ideal $I$.
+    \begin{enumerate}[i]
+          \item Show that the subgroup $S \cap I$ of $S$ is also an ideal.
+           \begin{proof}
+
+           \end{proof}
+
+        \item In proving the diamond theorem for groups, the map $$\phi : S \rar (S + I)/I, \ \ \ \phi(s) = s + I$$ is shown to be a group homomorphism with $\text{Ker}(\phi) = S \cap I$. Carry out the remaining details to prove the ring-theoretic version.
+           \begin{proof}
+
+           \end{proof}
+        \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{itemize}

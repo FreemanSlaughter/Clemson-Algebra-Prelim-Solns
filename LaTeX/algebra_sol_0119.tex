@@ -1,0 +1,300 @@
+
+\begin{itemize}
+
+\item[1.] Let $V$ be a finite-dimensional complex inner product space. A set of vectors
+$\{f_1, ... , f_m\}$ is called a \textit{Parseval frame} for $V$ if for every $v \in V$, $v = \sum_{i=1}^{m} \ip{v}{f_i} f_i$.
+\begin{enumerate}[(a)]
+    \item Prove that every orthonormal basis of $V$ is a Parseval frame.
+    \begin{proof}
+    Let $\{e_1, ... , e_n\}$ be an ONB of $V$. Write $v$ as $\alpha_1 e_1 + \alpha_2 e_2 + ... + \alpha_n e_n$ then plug it into the sum.
+    \end{proof}
+    
+    \item Prove that there exists a Parseval frame which is not an orthonormal basis.
+    \begin{proof}
+    Consider the Mercedes–Benz frame: 
+    $$f_1 = \left(0, 1 \right), \ \ f_2 = \left(\frac{-\sqrt{3}}{2}, \frac{-1}{2}\right), \ \ f_3 = \left(\frac{\sqrt{3}}{2}, \frac{-1}{2}\right).$$
+    This is not an ONB, as $f_1 \cdot f_2$ is not $(0,0)$. I invite you to perform the calculation yourself and verify that $\sum_{i=1}^{3} \ip{v}{f_i} f_i$ is, in fact, $v$ (perhaps after an appropriate normalization...)
+    \end{proof}
+    
+    \item Prove that every linearly independent Parseval frame is an orthonormal basis.
+    \begin{proof}
+    Suppose $\{f_i\}$ is a Parseval frame. If it doesn't span $V$ then there exists a non-zero $v \in V$ orthogonal to all $f_i$. But then, by def, $v=0$. This is a contradiction, so the $f_i$'s span - thus a basis.
+    % Basis follows for free. Let $v = f_j$ in the sum to see it must be that $\ip{f_j}{f_i} = 0$ for all $i \neq j$.
+    \end{proof}
+    
+    \item Prove that $\{f_1, ... , f_m\}$ is a Parseval frame for $V$ if and only if there is a complex inner product space $W$ such that the following is true:
+    \begin{enumerate}[(a)]
+        \item $V$ is isometrically embedded in $W$ , i.e., there is a an injective linear map $\phi : V \rar W$ such that $\ip{v_1}{v_1}_V = \ip{\phi(v_1)}{\phi(v_2)}_W$ for every $v_1, v_2 \in V$.
+
+        \item $\phi(f_i) = P_{\phi(V)} e_i$ for some orthonormal basis $\{e_1, ... , e_m\}$ of $W$, where $P_{\phi(V)}$ is the orthogonal projection onto the subspace $\phi(V)$.
+    \end{enumerate}
+    \begin{proof}
+        ($\Leftarrow$)
+        
+        \medskip 
+        
+        ($\Rightarrow$)
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\item[2.] Let $V$ be a finite-dimensional vector space over $\bbq$. Suppose that $A : V \rar V$ is an invertible linear map such that $A^{-1} = \frac{1}{2} A^2 + A$.
+\begin{enumerate}[(a)]
+    \item Give all possibilities for the minimal and characteristic polynomials of $A$.
+    \begin{proof}
+    The condition $A^{-1} = \frac{1}{2} A^2 + A$ implies that $A^3 + 2A^2 - 2I = 0$, which by Eisenstein's criterion is irreducible over $\bbq$. Thus $\mu_A(x) = x^3 + 2x^2 - 2$ and $\rho_A(x) = (x^3 + 2x^2 - 2)^n$ for $n \in \bbn$.
+    \end{proof}
+    
+    \item Prove that $\text{dim } V$ is a multiple of 3
+    \begin{proof}
+    By part (a) above, since $\dim(V) = \text{deg}(\rho_A)$, we get that $\text{deg}(\rho_A) = 3n$.
+    \end{proof}
+    
+    \item Give an explicit example of how Part (b) can fail if $\bbq$ is replaced by $\bbc$.
+    \begin{proof}
+    Over $\bbc$, every polynomial is reducible. If $r_1$ is a root of $\mu_A(x)$, then the $1 \times 1$ matrix $[r_1]$ satisfies $x^3 + 2x^2 - 2 = 0$ yet does not have dimension a multiple of 3.
+    \end{proof}
+    
+    \item Still assuming that $V$ is a $\bbc$-vector space, prove that if $\text{dim } V = 3$, then all such linear maps are similar.
+    \begin{proof}
+    Notice that $\rho_A'(x) = x(x+4/3)$, with roots $0$ and $-4/3$. Since neither is a root of $\rho_A(x)$, it has no repeated roots. Thus $\rho_A(x) = \mu_A(x)$, thus all maps are similar. 
+    \end{proof}
+    
+    \item Does Part (d) still hold over $\bbq$? Fully justify your answer
+    \begin{proof}
+    It does. Since $\text{dim } V = 3$, $\rho_A(x) = \mu_A(x)$.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\item[3.] A square matrix $N$ is said to be \textit{nilpotent} if there is a positive integer $m$ such that $N^m = 0$. Let $A$ and $B$ be $n \times n$ real matrices.
+\begin{enumerate}[(a)]
+    \item Prove that the following conditions are equivalent: (i) $A$ is nilpotent, (ii) $A^n = 0$, (iii) the only eigenvalue of $A$ is 0.
+    \begin{proof}
+    (i) $\Rightarrow$ (ii) Straightforward.
+    
+    \medskip 
+    
+    (ii) $\Rightarrow$ (iii) Cayley-Hamilton gives us that $A^n=0 \ \Rightarrow \ \lambda^n \in \Spec(A)$. So $\lambda=0$ is the only eigenvalue, with multiplicity $n$.
+    
+    \medskip 
+    
+    (iii) $\Rightarrow$ (i) If $\lambda=0$ is the only eigenvalue, then the Jordan normal form looks like the $0$ matrix, except with maybe some $1$'s on the superdiagonal. Clearly any such matrix is nilpotent, so $A^n = (P^{-1}JP)^n = P^{-1}J^nP = 0$.
+    \end{proof}
+    
+    \item Prove that $A$ is symmetric and nilpotent if and only if $A = 0$.
+    \begin{proof}
+    This is a straightforward consequence of the Schur decomposition. Stronger is true: the only \textit{normal} nilpotent matrix is 0.
+    \end{proof}
+    
+    \item Prove that if $A$ and $B$ are both nilpotent and $AB = BA$, then the matrices $AB$ and $rA + sB$ are nilpotent for all $r, s \in \bbr$.
+    \begin{proof}
+    Note that $A^n = B^k =0$ implies $(AB)^{nk} = 0$. 
+    
+    \medskip 
+    Since they commute, we also have 
+    \begin{align*}
+        (A + B)^{n+k} &= \sum_{i=0}^{n+k} \ \binom{n+k}{n} A^{(n+k)-i} B^i \\
+        &= \sum_{i=0}^{k} \ \binom{n+k}{n} A^{(n+k)-i} B^i + \sum_{i=k}^{n+k} \ \binom{n+k}{n} A^{(n+k)-i} B^i \\
+        &= \sum_{i=0}^{k} \ \binom{n+k}{n} 0 B^i + \sum_{i=k}^{n+k} \ \binom{n+k}{n} A^{(n+k)-i} 0 \\
+        &= 0.
+    \end{align*}
+    As $rA$ is nilpotent too, we get that $rA+sB$ is nilpotent. 
+    \end{proof}
+    
+    \item Prove or disprove: If the matrices $AB$ and $rA + sB$ are nilpotent for all $r, s \in \bbr$, then $AB = BA$.
+    \begin{proof}
+    Consider 
+    $$A = \begin{pmatrix}
+0 & a & b \\
+0 & 0 & c \\
+0 & 0 & 0
+\end{pmatrix} \text{ and } 
+B = \begin{pmatrix}
+0 & d & e \\
+0 & 0 & f \\
+0 & 0 & 0
+\end{pmatrix}.$$
+These matrices are nilpotent, so any scalar multiple is, and by above so will their sum be nilpotent. Their products are 
+$$AB = \begin{pmatrix}
+0 & 0 & af \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix} \text{ and } 
+BA = \begin{pmatrix}
+0 & 0 & cd \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}.$$    
+Both are nilpotent, but not equal in general. 
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+\item[4.] Let $G$ be an additive abelian group.
+
+\medskip 
+
+For each positive integer $n$, set $\Gamma_n(G) = \{g \in G \ | \ n^m g = 0 \text{ for some positive integer } m\}$.
+Let $\alpha : G \rar H$ and $\beta : H \rar K$ be homomorphisms of additive abelian groups
+\begin{enumerate}[(a)]
+    \item Prove that $\Gamma_n(G)$ is a subgroup of $G$.
+    \begin{proof}
+    Let $x,y \in \Gamma_n(G)$. Then $n^{m_1}x = 0$ and $n^{m_2}y = 0$. Hence 
+    \begin{align*}
+        n^{m_1+m_2} (x-y) &= n^{m_1+m_2}x - n^{m_1+m_2}y \\ 
+        &= n^{m_2}n^{m_1}x - n^{m_1}n^{m_2}y \\ 
+        &= n^{m_2}0 - n^{m_1}0 \\ 
+        &= 0.
+    \end{align*}
+    Thus $x-y \in \Gamma_n(G)$
+    \end{proof}
+    
+    \item Prove that $\alpha(\Gamma_n(G)) \subseteq \Gamma_n(H)$ and that $\Gamma_n(\alpha) : \Gamma_n(G) \rar \Gamma_n(H)$ defined by $\Gamma_n(\alpha)(g) = \alpha(g)$ is a well-defined group homomorphism.
+    \begin{proof}
+    Let $x \in \Gamma_n(G)$, meaning $n^{m}x = 0$. Now $\alpha(x) = y$ for some $y \in H$. Thus $$n^{m}y = n^{m} \alpha(x) = \alpha(n^{m} x) = 0.$$
+    Hence $\alpha(\Gamma_n(G)) \subseteq \Gamma_n(H)$.
+    
+    \medskip 
+    
+    Showing well-definedness and homomorphism is just writing it out.
+    \end{proof}
+    
+    \item Prove that if $\alpha$ is injective (i.e., 1-1), then so is $\Gamma_n(\alpha)$.
+    \begin{proof}
+    Suppose that $\alpha$ is injective. Then $\Kern(\Gamma_n(\alpha)) = \Kern(\alpha(g)) = \{0\}$ implies that $g = 0$.
+    \end{proof}
+    
+    \item Prove or disprove that if $\alpha$ is surjective (i.e., onto), then so is $\Gamma_n(\alpha)$.
+    \begin{proof}
+    It is not true. Let $G = \bbz$ and $H = \bbz_2$. Then taking $\alpha : G \rar H$ as the reduction modulo 2 is a surjective homomorphism. But $2^1 h = 0$ for all $h \in H$, hence $\Gamma_2(H) = H$. But $\bbz$ has no non-zero elements of finite order, so $1 \in H$ has no preimage in $\Gamma_2(G)$.
+    \end{proof}
+    
+    \item Prove that if $G$ is finitely generated, then $\Gamma_n(G)$ is finite.
+    \begin{proof}
+    Apply the fundamental theorem of finitely generated Abelian groups.
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\item[5.] Assume that $A$ is an integral domain with field of fractions $K$, and let $a$ be a non-zero element of $A$. Consider $A$ as a subring of the polynomial ring $A[x]$.
+\begin{enumerate}[(a)]
+    \item Prove that the following set is a subring of $K$ containing $A$. $A_a = \{r/a^n \in K | r \in A \text{ and } n \in \{0, 1, 2, ...\}\}$.
+    \begin{proof}
+    This localization obviously contains $A$ when $n=0$. To show subring, note that 
+    $$\frac{r_1}{a^{n_1}} \cdot \frac{r_2}{a^{n_2}} = \frac{r_1 r_2}{a^{n_1 + n_2}}$$
+    and 
+    $$\frac{r_1}{a^{n_1}} - \frac{r_2}{a^{n_2}} = \frac{r_1 a^{n_2} - r_2 a^{n_1}}{a^{n_1 + n_2}}$$
+    \end{proof}
+    
+    \item Prove that the function $\phi : A \rar A[x]/\langle xa - 1 \rangle$ given by $\phi(a) = a + \langle xa - 1 \rangle$ is a ring homomorphism that is injective (i.e., 1-1).
+    \begin{proof}
+    This might be easier in light of part (c).
+    (Homomorphism)
+%    \begin{align*}
+%        \phi(a+b) &= (a+b) + \langle x(a+b) - 1 \rangle \\
+%        &= (a + \langle xa - 1 \rangle) + (b + \langle xb - 1 \rangle) \\
+%        &= \phi(a) + \phi(b)
+%    \end{align*}
+%    and 
+%    \begin{align*}
+%        \phi(ab) &= (ab) + \langle x(ab) - 1 \rangle \\
+%        &= (a + \langle xa - 1 \rangle) + (b + \langle xb - 1 \rangle) \\
+%        &= \phi(a) + \phi(b)
+%    \end{align*}
+    \medskip 
+    
+    (Injective)
+    \end{proof}
+    
+    \item Prove that the rings $A_a$ and $A[x]/\langle xa - 1 \rangle$ are isomorphic.
+    \begin{proof} 
+    Quotienting a polynomial ring is the same as adjoining roots.
+    $$A[x]/\langle xa - 1 \rangle \cong A\left[\frac{1}{a}\right] = A_a.$$
+    \end{proof}
+    
+    \item Prove that the ring $A[x]/\langle xa - 1 \rangle$ satisfies the following property: For every commutative ring with identity $B$, for every ring homomorphism $\psi : A \rar B$, if $\psi(a)$ is a unit in $B$, then there is a unique ring homomorphism $\Phi : A[x]/\langle xa - 1 \rangle \rar B$ such that $\Phi(\psi(c)) = \phi(c)$ for all $c \in A$ and such that $\Psi(x + \langle xa - 1 \rangle) = \psi(a)-1$.
+    \begin{proof}
+    
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\item[6.] Let $A$ be a non-zero commutative ring with identity, and set
+$$\Aut(A) = \{\text{isomorphisms } f: A \xrightarrow{\cong} A \}.$$
+%https://web.archive.org/web/20180705220556/http://www.stack.nl:80/~jwk/latex/examples/node6.html
+Let $S$ be a subset of $\Aut(A)$, and set $A^S = \{a \in A \ | \ f(a) = a \text{ for all } f \in S\}$.
+
+\medskip 
+
+Let $T$ be a subset of $A$, and set $\Aut_T(A) = \{f \in \Aut(A) \ | \ f(t) = t \text{ for all } t \in T \}$.
+\begin{enumerate}[(a)]
+    \item Prove that $\Aut(A)$ is a group under function composition.
+    \begin{proof}
+    Standard proof. Composition of bijective is bijective, associativity, identity element, and inverses. If you want to be more clever about it, note that $\Aut(A)$ is a subgroup of $\text{Sym}(A)$, then apply the 2-step subgroup test.
+    \end{proof}
+    
+    \item Prove that $A^S$ is a subring of $A$.
+    \begin{proof}
+    Again, standard. Just check the axioms.
+    \end{proof}
+    
+    \item Let $G$ be the subgroup of $\Aut(A)$ generated by $S$, and prove that $A^S = A^G$.
+    \begin{proof}
+    Consider the following lemma: if $f$ and $g$ are automorphisms of $G$ that coincide on a set of generators, then $f=g$.
+    \end{proof}
+    
+    \item Prove that $\Aut_T(A)$ is a subgroup of $\Aut(A)$.
+    \begin{proof}
+    Again, 2-step subgroup test.
+    \end{proof}
+    
+    \item Prove that $G \subseteq \Aut_{A^G}(A) = \Aut_{A^S} (A)$ and $T \subseteq A^{\Aut_T(A)}$. Conclude further that if $R$ is the intersection of all the subrings of $A$ containing $T$, then $R \subseteq A^{\Aut_T(A)}$.
+    \begin{proof}
+    Looks annoying $:($
+    \end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}

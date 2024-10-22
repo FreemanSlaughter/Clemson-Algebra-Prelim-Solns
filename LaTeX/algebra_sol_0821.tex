@@ -1,0 +1,292 @@
+
+\begin{itemize}
+
+\item[1.] Let $V$ be a finite dimensional complex inner product space. For a linear map $T$ on $V$, let $K(T)$ be the kernel of $T$ and let $R(T)$ be the range of $T$.
+\begin{enumerate}[(a)]
+\item Let $A, B : V \rar V$ be two self-adjoint maps with orthogonal ranges.
+Show that $AB = BA = O$, the zero map on $V$.
+\begin{proof}
+    As the ranges are orthogonal, $\ip{Ax}{Bx} =0$. But since these are self-adjoint, and over a complex space, we get $\ip{BAx}{x}=0 \ \Rightarrow \ BA=0$.
+\end{proof}
+
+\item Let $A, B : V \rar V$ be two self-adjoint maps with orthogonal ranges
+such that $K(A) \cap K(B) = \{0\}$. Prove that $K(A) = R(B)$ and $K(B) = R(A)$.
+\begin{proof}
+    Recall $K(A) = R(A)^{\perp}$. But $A$ and $B$ have orthogonal ranges, so $R(A)^{\perp} = R(B)$.
+\end{proof}
+
+\item points) Let $A, B : V \rar V$ be orthogonal projections with orthogonal ranges
+such that $K(A) \cap K(B) = \{0\}$. Prove that $A + B = I$, where $I$ is the identity
+map on $V$.
+\begin{proof}
+    Recall any $x$ can be decomposed into the sum of $Ax$ (in the range) and $x-Ax$ (in the kernel). Since the kernel of $A$ is the range of $B$, we can write $x = Ax + Bx$, or as operators, $I = A+B$.
+\end{proof}
+
+\item Let $T = A - B$, where $A$ and $B$ are maps as in (c). Show that $T$
+is unitary and self-adjoint.
+\begin{proof}
+    Self-adjointness follows, since $(A-B)^* = A-B$. To see unitary, by a) and c), we get $$\ip{(A-B)x}{(A-B)x} = \ip{Ax}{Ax} + \ip{Bx}{Bx} = \ip{(A+B)x}{x} = \ip{x}{x}.$$
+\end{proof}
+
+\item Let $S : V \rar V$ be both unitary and self-adjoint. Prove that $S$ is a
+difference of two orthogonal projections with orthogonal ranges.
+\begin{proof}
+    Write $$Sx = \frac{x+Sx}{2} - \frac{x-Sx}{2}.$$
+    Since $S$ is unitary, $SS^* = S^*S = 1$, so self-adjointness gives $S^2 = I$. Letting $A$ be the RHS above and $B$ the LHS, $A^2 = \frac{1}{4}(I + 2S + S^2) = \frac{1}{4}(2I + 2S) = A$. Additionally, $A^* = A$, so $A$ is an orthogonal projection. $B$ can be verified similarly. Finally, $S$ unitary means it is norm-preserving, hence
+    \begin{align*}
+        \ip{\frac{x+Sx}{2}}{\frac{x+Sx}{2}} &= \frac{1}{4}(\ip{x}{x} + \ip{Sx}{x} - \ip{x}{Sx} - \ip{Sx}{Sx}) \\
+        &= \frac{1}{4}(\ip{x}{x} + \ip{Sx}{x} - \ip{Sx}{x} - \ip{Sx}{Sx}) \\
+        &= \frac{1}{4}(\ip{x}{x} - \ip{Sx}{Sx}) \\
+        &=0. 
+    \end{align*}
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+\item[2.] Suppose that $A, B \in M_{10}(\bbc)$ are two matrices such that $\text{rank}(A) = 7$, $\text{rank}(A^2) = 4$, $\text{rank}(A^3) = 2$, $A^4 = 0$, $B$ is invertible, and $AB = BA$.
+\begin{enumerate}[(a)]
+\item Find the Jordan normal form of $A$.
+\begin{proof}
+$$    \left[ 
+    \begin{array}{c|c|c} 
+      \begin{matrix}
+        0 & 1 & & & \\
+        & 0 & 1 & & \\
+        & & 0 & 1 & \\
+        & & & 0 & 1 \\
+        & & & & 0 & \\
+    \end{matrix} &  &  \\ 
+      \hline 
+       & \begin{matrix}
+  0 & 1 \\
+  & 0 & 1 \\
+  & & 0 \\
+  \end{matrix} &  \\
+      \hline
+       &  & \begin{matrix}
+  0 & 1 \\
+   & 0  \\
+  \end{matrix}
+    \end{array} 
+    \right] $$
+\end{proof}
+
+\item Find the minimal and the characteristic polynomials of $AB$.
+\begin{proof}
+    The characteristic for $A$ is $x^{10}$; minimal is $x^4$. In this case, since $B$ is invertible and commutes with $A$, $AB$ will have the same characteristic and minimal polynomial as $A$.
+\end{proof}
+
+\item Prove that $I - A$ is invertible and express it as a polynomial of $A$.
+\begin{proof}
+    This is a ring-theoretic property of nilpotent elements. Let $\lambda_i$ be the eigenvalues of $A$. Then the eigenvalues of $I-A$ will look like $1-\lambda_i$. But since $A$ is nilpotent, all of its eigenvalues are $0$, hence the eigenvalues of $I-A$ are only $1$'s. To express the inverse as a polynomial, simply compute 
+    $$(I-A)(I+A+A^2+A^3) = I.$$
+    Note: at heart, this is really a Taylor series, truncated
+    $$\frac{1}{1-x} = 1+x+x^2+x^3+...$$
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\item[3.] Let $V$ be a finite dimensional complex vector space. Let $A, B \in \text{Hom}_{\bbc}(V, V)$ such
+that $AB = BA$ and let $f_1, f_2 \in V^{*}$.
+\begin{enumerate}[(a)]
+\item Let $g : V \rar \bbc$ be defined by $g(v) = f_1(v)f_2(v)$. Prove that if
+$g \in V^{*}$
+then at least one of $f_1$ and $f_2$ is the zero functional.
+\begin{proof}
+
+\end{proof}
+
+\item Prove that each eigenspace of $A$ is invariant under $B$.
+\begin{proof}
+
+\end{proof}
+
+\item Prove that $A$ and $B$ have at least one common eigenvector.
+\begin{proof}
+
+\end{proof}
+
+\item Prove that if $A^2$ has eigenvalue $\lambda^2$ then $\lambda$ or $-\lambda$ is an eigenvalue for $A$.
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\item[4.] In this problem, we will let G be a group of order 112.
+\begin{enumerate}[(a)]
+\item Find all possibilities for the number of Sylow $p$-subgroups of $G$ for
+every relevant prime $p$.
+\begin{proof}
+Calculate $112 = 2^4 \cdot 7$. By Sylow theorems, $n_2 = 1, \ 7$ and $n_7 = 1, \ 8$.
+\end{proof}
+
+\item If we suppose that $G$ is simple, how many Sylow $p$-subgroups does $G$ have for each relevant prime $p$?
+\begin{proof}
+$G$ simple $\Rightarrow$ $n_2 = 7$ and $n_7 = 8$.
+\end{proof}
+
+\item Show that if $G$ is simple, then there is a nontrivial homomorphism $\phi : G \rar S_7$ (the symmetric group on 7 letters).
+\begin{proof}
+Cayley's theorem give a hom into $S_{112}$, but this is too large. 
+
+Fix elements of order $2^n$ for all $n$, and permute the elements in the 7-subgroup. This will form a non-trivial hom into $S_7$.
+\end{proof}
+
+\item Show that if $G$ is simple, then $G$ is isomorphic to a subgroup of $A_7$.
+\begin{proof}
+Assume we have a non-trivial hom into $S_7$. A non-trivial normal subgroup of $S_7$ is $A_7$. Since $G$ is simple, it must actually be isomorphic to some subgroup contained in $A_7$.
+\end{proof}
+
+\item Conclude there is no simple group of order 112.
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\item[5.] In this problem, let $R$ be a commutative ring with identity, $\{P_i\}_{i \in \Lambda}$ the set of prime
+ideals of $R$, and $\{M_j\}_{j \in \Gamma}$ the set of maximal ideals of $R$. For this problem you may
+use the fact that if $S$ is a multiplicatively closed subset of $R$, and $I$ is an ideal with
+the property that $I \bigcap S = \emptyset$, then there is a prime ideal $P$ such that $P \bigcap S = \emptyset$.
+\begin{enumerate}[(a)]
+\item Show that an arbitrary intersection of prime ideals is a radical ideal.
+\begin{proof}
+Let $P$ and $Q$ be prime ideals, with $K = P \cap Q$. For $r^n \in K$, then $r^n \in P$, thus $r \in P$ or $r^{n-1} \in P$. If it's the first, $K$ is radical. If it's the second, then $r^{n-1} \in K$, so repeat this process until just $r$ is left. 
+\end{proof}
+
+\item Show that 
+$$N = \bigcap_{i \in \Lambda} P_i$$
+where $N$ denotes the set of nilpotent elements of $R$.
+\begin{proof}
+Let $n \in N$. This intersection is radical, so $n^m = 0 \in P_i$, thus $n \in P_i$. Therefore $N \subset \bigcap_{i \in \Lambda} P_i$.
+
+\medskip 
+
+For contrapositive, suppose $n \not\in N$. Form the multiplicatively closed subset $S = \{e, n, n^2, ...\}$. If there exists an ideal $I$ (let $I=\{0\}$) such that $I \bigcap S = \emptyset$, then there exists $P$ such that $P \bigcap S = \emptyset$. That is, $n \not\in P$, so by contrapositive $P \subseteq N$.
+\end{proof}
+
+\item Use the previous (if you like) to show that if $I \subset R$ is an ideal, then
+$$\sqrt{I} = \bigcap_{I \subseteq P} P$$
+where the intersection is taken over the set of prime ideals that contain $I$.
+\begin{proof}
+Let $r \in \sqrt{I}$. Then $r^n \in I$ for some $n$, so $r^n \in \bigcap P$. Since this intersection is radical, $r \in \bigcap P$.
+
+\medskip 
+Like above, suppose for contradiction that $r \not\in \sqrt{I}$. Then there exists $P$ such that $P \bigcap S = \emptyset$. That is, $r \not\in P$
+\end{proof}
+
+\item Show that if $J := \bigcap_{j \in \Gamma} M_j$ then $x \in J$ if and only if $1+rx$ is a unit for all $r \in R$.
+\begin{proof}
+Maximal $\Rightarrow$ prime, so $J$ is nilpotent. By (e), thus $1+rx$ is a unit.
+
+\medskip 
+
+From Burr's HW $\#9$, an ideal $M$ is maximal iff for all $r \in R/M$ there exists an $x$ such that $1+rx \in M$. 
+\textbf{INCOMPLETE}
+%So for contrapositive, suppose $x \not\in J$. Then 
+\end{proof}
+
+\item Show that if $x$ is a nilpotent element of $R$ then $1+rx$ is a unit for all $r \in R$.
+\begin{proof}
+It is easier to see that $1-rx$ is nilpotent: suppose that $x^n=0$ and expand 
+$$(1-rx)(1 + rx + (rx)^2 + ... + (rn)^{n-1}).$$
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+\item[6.] For this problem, we will let $\bbf$ be a field, $\bbr$ and $\bbc$ the real and complex numbers
+respectively, and $\bbz$ the integers. We will let $f(x)$ be a polynomial in $\bbf[x]$ such that
+$\text{deg}(f(x)) \geq 1$.
+\begin{enumerate}[(a)]
+\item Find (and prove) necessary and sufficient conditions on the polynomial
+$f(x)$ for the quotient ring $\bbf[x]/(f(x))$ to be a field.
+\begin{proof}
+
+\end{proof}
+
+\item Show that $\bbf[x]/(f(x))$ is a field if and only if $\bbf[x]/(f(x))$ is an integral
+domain.
+\begin{proof}
+
+\end{proof}
+
+\item Show that if $f(x)$ is a product of \textit{distinct} irreducible polynomials in
+$\bbf[x]$ then $\bbf[x]/(f(x))$ is a finite direct product of fields.
+\begin{proof}
+
+\end{proof}
+
+\item In the case that $\bbr = \bbr$ and $f(x)$ is a product of distinct irreducibles
+in $\bbr[x]$, show that $\bbf[x]/(f(x))$ is isomorphic to a finite direct product of fields
+each of which is isomorphic to either $\bbr$ or $\bbc$.
+\begin{proof}
+
+\end{proof}
+
+\item If we now let $f(x) \in \bbz[x]$ (still of degree at least 1), show that $\bbz[x]/(f(x))$ is \textit{never} a field.
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
